@@ -71,8 +71,16 @@ namespace SkalProj_Datastrukturer_Minne
                         ExamineStack();
                         break;
                     case '4':
-                        CheckParanthesis();
-                        break;
+                        if (CheckParanthesis())
+                        {
+                            Console.WriteLine("Balanced");
+                        }
+
+                        else
+                        {
+                            Console.WriteLine("Unbalanced");
+                        }
+                    break;
                     /*
                      * Extend the menu to include the recursive 
                      * and iterative exercises.
@@ -271,7 +279,7 @@ namespace SkalProj_Datastrukturer_Minne
             }
         }
 
-        static void CheckParanthesis()
+        static bool CheckParanthesis()
         {
             /*
              * Use this method to check if the paranthesis in a string is Correct or incorrect.
@@ -279,8 +287,60 @@ namespace SkalProj_Datastrukturer_Minne
              * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
              */
 
-        }
 
+            Stack<char> theStack = new Stack<char>();
+
+            Console.WriteLine("Enter string");
+            string s = Console.ReadLine();
+
+
+            foreach(char c in s)
+            {
+                if(c == '(' || c == '[' || c == '{')
+                { 
+                    theStack.Push(c);
+                }
+
+                else if(c == ')' || c == ']' || c == '}')
+                {
+                    if (theStack.Count == 0)
+                    {
+                        return false; 
+                    }
+
+                    else
+                    {
+                        char c2 = theStack.Pop();
+                        if(c == ')' && c2 != '(')
+                        {
+                            return false;
+                        }
+
+                        if (c == ']' && c2 != '[')
+                        {
+                            return false;
+                        }
+
+                        if(c == '}' && c2 != '{')
+                        {
+                            return false;
+                        }
+                    }
+                } 
+            }
+
+            if (theStack.Count != 0)
+            {
+                return false;
+            }
+
+            if(theStack.Count == 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
 
