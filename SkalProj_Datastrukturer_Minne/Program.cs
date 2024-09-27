@@ -71,7 +71,7 @@ namespace SkalProj_Datastrukturer_Minne
                         ExamineStack();
                         break;
                     case '4':
-                        //CheckParanthesis();
+                        CheckParanthesis();
                         break;
                     /*
                      * Extend the menu to include the recursive 
@@ -106,6 +106,7 @@ namespace SkalProj_Datastrukturer_Minne
             //3: Listans kapacitet ökar med 4
             //4: pga dom som skrivit koden för list har bestämt att kapaciteten skall öka med 4 varje gång fyra element har lagts till
             //5: nej
+            //6: När man vet hur stor Arrayen kommer att bli i förväg
            
 
             List<string> theList = new List<string>();
